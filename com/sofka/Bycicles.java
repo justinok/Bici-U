@@ -3,6 +3,8 @@ package com.sofka;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sofka.Menus.scannerText;
+
 public class Bycicles {
 
     private static List<ArrayList<String>> mountain = new ArrayList<>();
@@ -55,12 +57,24 @@ public class Bycicles {
     }
 
     public static void borrowBycicle(){
+        String mor;
         if(Registration.checkDebt()){
             System.out.println("You have an active debt please cancel it and" +
                     "try again");
         }
         if(!Registration.checkDebt()){
-            System.out.println("You are fine");
+            System.out.println("Choose the Type of your bycicle Mountain " +
+                    "or Road (M/R)");
+            mor = scannerText();
+            switch (mor){
+                case "M":
+                    System.out.println("Bycicle Selected!");
+                    System.out.println("Code: " + mountain.get(1).get(1));
+                    System.out.println("Type: " + mountain.get(1).get(2));
+                    System.out.println("Color: " + mountain.get(1).get(3));
+                    System.out.println("A ticket was generated!");
+            }
+
         }
 
     }

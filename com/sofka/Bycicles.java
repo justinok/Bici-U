@@ -1,14 +1,24 @@
 package com.sofka;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.sofka.Menus.scannerText;
+import static com.sofka.Registration.getDNI;
+import static com.sofka.Registration.getName;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 
 public class Bycicles {
 
     private static List<ArrayList<String>> mountain = new ArrayList<>();
     private static List<ArrayList<String>> road = new ArrayList<>();
+    static ArrayList<String> tickets = new ArrayList<>();
+    private static Integer ticket = 0;
+    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    static LocalDateTime now = LocalDateTime.now();
 
     public static void creationOfInventory(){
         ArrayList<String> mbic1 = new ArrayList<>();
@@ -68,15 +78,48 @@ public class Bycicles {
             mor = scannerText();
             switch (mor){
                 case "M":
-                    System.out.println("Bycicle Selected!");
-                    System.out.println("Code: " + mountain.get(1).get(1));
-                    System.out.println("Type: " + mountain.get(1).get(2));
-                    System.out.println("Color: " + mountain.get(1).get(3));
-                    System.out.println("A ticket was generated!");
+                    mountainTicket();
+                    break;
             }
 
         }
 
+    }
+
+    private static void mountainTicket(){
+        System.out.println("Bycicle Selected!");
+        System.out.println("Code: " + mountain.get(1).get(1));
+        System.out.println("Type: " + mountain.get(1).get(2));
+        System.out.println("Color: " + mountain.get(1).get(3));
+        System.out.println("A ticket was generated!");
+        ticket += 1;
+        tickets.add(String.valueOf(ticket));
+        tickets.add("Bycicle: " + mountain.get(1).get(1));
+        tickets.add("User: " + getDNI());
+        tickets.add("Name: " + getName());
+        tickets.add("Date: " + dtf.format(now));
+        tickets.add("Have helmet: True");
+        tickets.add("Good condition: True");
+        tickets.add("Status: Active");
+        com.sofka.tickets.writeTicket(tickets);
+    }
+
+    private static void roadTicket(){
+        System.out.println("Bycicle Selected!");
+        System.out.println("Code: " + road.get(1).get(1));
+        System.out.println("Type: " + road.get(1).get(2));
+        System.out.println("Color: " + road.get(1).get(3));
+        System.out.println("A ticket was generated!");
+        ticket += 1;
+        tickets.add(String.valueOf(ticket));
+        tickets.add("Bycicle: " + road.get(1).get(1));
+        tickets.add("User: " + getDNI());
+        tickets.add("Name: " + getName());
+        tickets.add("Date: " + dtf.format(now));
+        tickets.add("Have helmet: True");
+        tickets.add("Good condition: True");
+        tickets.add("Status: Active");
+        com.sofka.tickets.writeTicket(tickets);
     }
 
 

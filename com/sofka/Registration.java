@@ -248,4 +248,20 @@ public class Registration {
     public List<ArrayList<String>> getStudents() {
         return students;
     }
+
+    public static String getDNI() {
+        return DNI;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static Integer getAge() {
+        return age;
+    }
+
+    public static String getStatus() {
+        return status;
+    }
 }

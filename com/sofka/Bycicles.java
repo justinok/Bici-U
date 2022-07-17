@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sofka.Menus.scannerText;
-import static com.sofka.Registration.getDNI;
-import static com.sofka.Registration.getName;
+import static com.sofka.Registration.*;
+import static com.sofka.tickets.writeTicketHistory;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ public class Bycicles {
     private static List<ArrayList<String>> mountain = new ArrayList<>();
     private static List<ArrayList<String>> road = new ArrayList<>();
     static ArrayList<String> tickets = new ArrayList<>();
+    static ArrayList<String> ticketsHistory = new ArrayList<>();
     private static Integer ticket = 0;
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     static LocalDateTime now = LocalDateTime.now();
@@ -80,6 +82,9 @@ public class Bycicles {
                 case "M":
                     mountainTicket();
                     break;
+                case "R":
+                    roadTicket();
+                    break;
             }
 
         }
@@ -102,6 +107,12 @@ public class Bycicles {
         tickets.add("Good condition: True");
         tickets.add("Status: Active");
         com.sofka.tickets.writeTicket(tickets);
+        ticketsHistory.add(road.get(1).get(1));
+        ticketsHistory.add("S-" + getDNI());
+        ticketsHistory.add(getName());
+        ticketsHistory.add("Amount $");
+        ticketsHistory.add(getStatus());
+        writeTicketHistory(ticketsHistory);
     }
 
     private static void roadTicket(){
@@ -120,7 +131,12 @@ public class Bycicles {
         tickets.add("Good condition: True");
         tickets.add("Status: Active");
         com.sofka.tickets.writeTicket(tickets);
-        
+        ticketsHistory.add(road.get(1).get(1));
+        ticketsHistory.add("S-" + getDNI());
+        ticketsHistory.add(getName());
+        ticketsHistory.add("Amount $");
+        ticketsHistory.add(getStatus());
+        writeTicketHistory(ticketsHistory);
     }
 
 

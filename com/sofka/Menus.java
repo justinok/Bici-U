@@ -52,7 +52,8 @@ public class Menus {
                     Registration.registrationMenu();
                     break;
                 case 2:
-                    System.out.println("Option2");
+                    Bycicles.borrowBycicle();
+
                     break;
                 case 3:
                     System.out.println("Option3");
@@ -61,7 +62,8 @@ public class Menus {
                     System.out.println("Option4");
                     break;
                 case 5:
-                    System.out.println("Option5");
+                    System.out.println("You can check now the tickets history" +
+                            "file created on this directory.");
                     break;
             }
 

@@ -1,7 +1,17 @@
 package com.sofka;
 
-public class Menus {
+import java.util.Scanner;
 
+public class Menus {
+    public static String scannerText(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public static int scannerInt(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
     public static void welcomeMsg() {
         System.out.println("===============================================" +
                 "============");
@@ -13,12 +23,13 @@ public class Menus {
     }
 
     public static void mainMenu() {
+
         System.out.println("| 1. Register User                             " +
                 "           |");
         System.out.println("| 2. Borrow Bicycle                             " +
                 "          |");
         System.out.println("| 3. Return Bicycle                             " +
-                "             |");
+                "          |");
         System.out.println("| 4. Pay Tickets                             " +
                 "             |");
         System.out.println("| 5. Tickets History                             " +
@@ -29,6 +40,35 @@ public class Menus {
                 "============");
     }
 
+    public static void biciU(){
+        int menuChoice = 0;
+
+        do{
+            Menus.welcomeMsg();
+            Menus.mainMenu();
+            menuChoice = scannerInt();
+            switch (menuChoice) {
+                case 1:
+                    Registration.registrationMenu();
+                    break;
+                case 2:
+                    System.out.println("Option2");
+                    break;
+                case 3:
+                    System.out.println("Option3");
+                    break;
+                case 4:
+                    System.out.println("Option4");
+                    break;
+                case 5:
+                    System.out.println("Option5");
+                    break;
+            }
+
+
+        }while(menuChoice != 6);
+
+    }
 
 
 

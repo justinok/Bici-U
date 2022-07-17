@@ -50,6 +50,7 @@ public class Menus {
             switch (menuChoice) {
                 case 1:
                     Registration.registrationMenu();
+                    Registration.askInfo();
                     break;
                 case 2:
                     Bycicles.borrowBycicle();
